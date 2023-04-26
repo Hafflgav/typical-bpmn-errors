@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="Collaboration_0lghfm3">
+    <bpmn:participant id="Participant_0585xmd" name="Approval Process" processRef="Process_1" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:startEvent id="StartEvent_1" name="Holidays requested">
+      <bpmn:outgoing>Flow_02vcust</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_02vcust" sourceRef="StartEvent_1" targetRef="Activity_1m6u55w" />
+    <bpmn:exclusiveGateway id="Gateway_0oxllx9" name="Holidays approved">
+      <bpmn:incoming>Flow_1h4180j</bpmn:incoming>
+      <bpmn:outgoing>Flow_1eabfaq</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1ivs2dl</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1h4180j" sourceRef="Activity_1m6u55w" targetRef="Gateway_0oxllx9" />
+    <bpmn:sequenceFlow id="Flow_1eabfaq" name="no" sourceRef="Gateway_0oxllx9" targetRef="Event_0h53q8q" />
+    <bpmn:endEvent id="Event_0h53q8q" name="Holidays not approved">
+      <bpmn:incoming>Flow_1eabfaq</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="Gateway_1b5qzvs" name="Replacement necessary?">
+      <bpmn:incoming>Flow_1ivs2dl</bpmn:incoming>
+      <bpmn:outgoing>Flow_0a6uicb</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1n99vj0</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1ivs2dl" name="yes" sourceRef="Gateway_0oxllx9" targetRef="Gateway_1b5qzvs" />
+    <bpmn:endEvent id="Event_0ptnibn" name="Holidays approved">
+      <bpmn:incoming>Flow_0a6uicb</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0a6uicb" name="no" sourceRef="Gateway_1b5qzvs" targetRef="Event_0ptnibn" />
+    <bpmn:sequenceFlow id="Flow_1n99vj0" sourceRef="Gateway_1b5qzvs" targetRef="Activity_1m6u55w" />
+    <bpmn:userTask id="Activity_1m6u55w" name="Approve Holidays">
+      <bpmn:incoming>Flow_02vcust</bpmn:incoming>
+      <bpmn:incoming>Flow_1n99vj0</bpmn:incoming>
+      <bpmn:outgoing>Flow_1h4180j</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0lghfm3">
+      <bpmndi:BPMNShape id="Participant_0585xmd_di" bpmnElement="Participant_0585xmd" isHorizontal="true">
+        <dc:Bounds x="242" y="160" width="618" height="270" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="322" y="252" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="316" y="295" width="49" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0oxllx9_di" bpmnElement="Gateway_0oxllx9" isMarkerVisible="true">
+        <dc:Bounds x="565" y="245" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="567" y="207.5" width="46" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0h53q8q_di" bpmnElement="Event_0h53q8q">
+        <dc:Bounds x="572" y="332" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="560" y="375" width="61" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1b5qzvs_di" bpmnElement="Gateway_1b5qzvs" isMarkerVisible="true">
+        <dc:Bounds x="675" y="245" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="668" y="302" width="65" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ptnibn_di" bpmnElement="Event_0ptnibn">
+        <dc:Bounds x="792" y="252" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="787" y="295" width="46" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ypywmb_di" bpmnElement="Activity_1m6u55w">
+        <dc:Bounds x="410" y="230" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_02vcust_di" bpmnElement="Flow_02vcust">
+        <di:waypoint x="358" y="270" />
+        <di:waypoint x="410" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1h4180j_di" bpmnElement="Flow_1h4180j">
+        <di:waypoint x="510" y="270" />
+        <di:waypoint x="565" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1eabfaq_di" bpmnElement="Flow_1eabfaq">
+        <di:waypoint x="590" y="295" />
+        <di:waypoint x="590" y="332" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="599" y="311" width="13" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ivs2dl_di" bpmnElement="Flow_1ivs2dl">
+        <di:waypoint x="615" y="270" />
+        <di:waypoint x="675" y="270" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="636" y="252" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0a6uicb_di" bpmnElement="Flow_0a6uicb">
+        <di:waypoint x="725" y="270" />
+        <di:waypoint x="792" y="270" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="752" y="252" width="13" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1n99vj0_di" bpmnElement="Flow_1n99vj0">
+        <di:waypoint x="700" y="245" />
+        <di:waypoint x="700" y="180" />
+        <di:waypoint x="460" y="180" />
+        <di:waypoint x="460" y="230" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
