@@ -12,11 +12,6 @@
       <bpmn:outgoing>Flow_1gxuwez</bpmn:outgoing>
       <bpmn:outgoing>Flow_1mruvhp</bpmn:outgoing>
     </bpmn:parallelGateway>
-    <bpmn:exclusiveGateway id="Gateway_14n30x0">
-      <bpmn:incoming>Flow_0tz8ji9</bpmn:incoming>
-      <bpmn:incoming>Flow_0selrj1</bpmn:incoming>
-      <bpmn:outgoing>Flow_18g3ljp</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
     <bpmn:endEvent id="Event_0ky3t30" name="Bargeld ausgezahlt">
       <bpmn:incoming>Flow_1fzw7au</bpmn:incoming>
     </bpmn:endEvent>
@@ -44,6 +39,11 @@
     <bpmn:sequenceFlow id="Flow_0selrj1" sourceRef="Activity_0a94zfo" targetRef="Gateway_14n30x0" />
     <bpmn:sequenceFlow id="Flow_18g3ljp" sourceRef="Gateway_14n30x0" targetRef="Activity_161nm72" />
     <bpmn:sequenceFlow id="Flow_1fzw7au" sourceRef="Activity_161nm72" targetRef="Event_0ky3t30" />
+    <bpmn:parallelGateway id="Gateway_14n30x0">
+      <bpmn:incoming>Flow_0tz8ji9</bpmn:incoming>
+      <bpmn:incoming>Flow_0selrj1</bpmn:incoming>
+      <bpmn:outgoing>Flow_18g3ljp</bpmn:outgoing>
+    </bpmn:parallelGateway>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0bykmex">
@@ -59,9 +59,6 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0e8gs0f_di" bpmnElement="Gateway_1l7elpt">
         <dc:Bounds x="435" y="225" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_14n30x0_di" bpmnElement="Gateway_14n30x0" isMarkerVisible="true">
-        <dc:Bounds x="695" y="225" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0ky3t30_di" bpmnElement="Event_0ky3t30">
         <dc:Bounds x="962" y="232" width="36" height="36" />
@@ -81,6 +78,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ferkow_di" bpmnElement="Activity_161nm72">
         <dc:Bounds x="800" y="210" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1b5d6sq_di" bpmnElement="Gateway_14n30x0">
+        <dc:Bounds x="695" y="225" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0tx9f3z_di" bpmnElement="Flow_0tx9f3z">
         <di:waypoint x="228" y="250" />
